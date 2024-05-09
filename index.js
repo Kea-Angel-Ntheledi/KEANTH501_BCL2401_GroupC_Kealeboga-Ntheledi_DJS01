@@ -19,15 +19,22 @@ const rf = fuel  - (fbr*time) //calculates remaining fuel
 const vel2 = calcNewVel(vel, accInKmH, time); //calculates new velocity based on acceleration
 
 // Pick up an error with how the function below is called and make it robust to such errors
-function calcNewVel(vel, accInKmH, time) { 
-  try {
-    if (calcNewVel !== vel + (accInKmH*time) ){
-      throw new Error("Incorrect unit of measurement")
-    }
-  
-  }
+function calcNewVel(vel, accInKmH, time) {  
+
+  return vel + (accInKmH*time)
 }
 
+  try {
+    if (calcNewVel() === vel + (accInKmH*time) ){
+      throw new Error("Incorrect unit of measurement")
+    }
+
+  } catch (error) {
+    console.error(`Error: ${error.message}`)
+  }
+
+
+console.log(accInKmH)
 console.log(`Corrected New Velocity: ${vel2} km/h`);
 console.log(`Corrected New Distance: ${d2} km`);
 console.log(`Corrected Remaining Fuel: ${rf} kg`);
