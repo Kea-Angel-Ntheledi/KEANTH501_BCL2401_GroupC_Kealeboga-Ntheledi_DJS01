@@ -16,11 +16,16 @@ const fbr = 0.5; // fuel burn rate (kg/s)
 //converts the units of measurement from meters to kilometeres & from seconds to hours
 const d2 = d + (vel*timeInHr) //calcultes new distance
 const rf = fuel  - (fbr*time) //calculates remaining fuel
-const vel2 = calcNewVel(vel, accInKmH*time); //calculates new velocity based on acceleration
+const vel2 = calcNewVel(vel, accInKmH, time); //calculates new velocity based on acceleration
 
 // Pick up an error with how the function below is called and make it robust to such errors
-calcNewVel = (vel, acc, time) => { 
-  return vel + (acc*time)
+function calcNewVel(vel, accInKmH, time) { 
+  try {
+    if (calcNewVel !== vel + (accInKmH*time) ){
+      throw new Error("Incorrect unit of measurement")
+    }
+  
+  }
 }
 
 console.log(`Corrected New Velocity: ${vel2} km/h`);
