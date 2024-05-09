@@ -19,13 +19,16 @@ function unitConversion (acc, time) {
 
   return (accInKmH, timeInHr)
 }
-//converts the units of measurement from meters to kilometeres & from seconds to hours
+const {accInKmH, timeInHr} = unitConversion(acc,time); //calling the variables to global scope so that they can be used as arguments
+
 const d2 = d + (vel*timeInHr) //calcultes new distance
 const rf = fuel  - (fbr*time) //calculates remaining fuel
-const vel2 = calcNewVel(vel, accInKmH, time); //calculates new velocity based on acceleration
+const vel2 = calcNewVel(vel, accInKmH, time) //calculates new velocity based on acceleration
 
 // Pick up an error with how the function below is called and make it robust to such errors
 function calcNewVel(vel, accInKmH, time) {  
+  return vel + (accInKmH*time)
+}
 
   try {
     if (calcNewVel() === vel + (accInKmH*time) ){
@@ -36,8 +39,7 @@ function calcNewVel(vel, accInKmH, time) {
     console.error(`Error: ${error.message}`)
   }
 
-  return vel + (accInKmH*time)
-}
+ 
 
 console.log(accInKmH)
 console.log(`Corrected New Velocity: ${vel2} km/h`);
