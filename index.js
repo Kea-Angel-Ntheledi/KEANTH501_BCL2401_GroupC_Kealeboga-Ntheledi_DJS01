@@ -15,13 +15,14 @@ const fuelBurnRate = { value: 0.5, unit: "kg/s" }; // fuel burn rate (kg/s)
 
 // Function to calculate new velocity based on acceleration
 const calcNewVelocity = (acceleration, velocity, duration) => {
-}
-const {accInKmH, timeInHr} = unitConversion(acc,time); //calling the variables to global scope so that they can be used as arguments
-
-const d2 = d + (vel*timeInHr) //calculates new distance
-const rf = fuel  - (fbr*time) //calculates remaining fuel
-const vel2 = calcNewVel(vel, accInKmH, time) //calculates new velocity based on acceleration
-
+// Validate input parameters
+  if (
+    typeof acceleration !== "number" ||
+    typeof velocity !== "number" ||
+    typeof duration !== "number"
+  ) {
+    throw new Error("Invalid input parameters for calcNewVelocity function");
+  }
 // Pick up an error with how the function below is called and make it robust to such errors
 function calcNewVel(vel, accInKmH, time) {  
   return vel + (accInKmH*time)
