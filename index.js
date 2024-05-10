@@ -15,7 +15,7 @@ const fuelBurnRate = { value: 0.5, unit: "kg/s" }; // fuel burn rate (kg/s)
 
 // Function to calculate new velocity based on acceleration
 const calcNewVelocity = (acceleration, velocity, duration) => {
-// Validate input parameters
+  // Validate input parameters
   if (
     typeof acceleration !== "number" ||
     typeof velocity !== "number" ||
@@ -23,10 +23,11 @@ const calcNewVelocity = (acceleration, velocity, duration) => {
   ) {
     throw new Error("Invalid input parameters for calcNewVelocity function");
   }
-// Pick up an error with how the function below is called and make it robust to such errors
-function calcNewVel(vel, accInKmH, time) {  
-  return vel + (accInKmH*time)
-}
+  /// Calculate new velocity based on acceleration
+  const newVelocity = velocity + acceleration * duration;
+
+  return newVelocity;
+};
 
   try {
     if (calcNewVel() === vel + (accInKmH*time) ){
