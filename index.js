@@ -47,6 +47,12 @@ if (
 const velocityInMetersPerSecond = velocity.value / 3.6;
 const initialDistanceInMeters = initialDistance.value * 1000;
 
+// Calculate new distance
+const newDistanceInMeters =
+  initialDistanceInMeters + velocityInMetersPerSecond * duration.value;
+const newDistanceInKilometers = newDistanceInMeters / 1000;
+
+
 //console.log(accInKmH)
 console.log(`Corrected New Velocity: ${vel2} km/h`);
 console.log(`Corrected New Distance: ${d2} km`);
