@@ -52,6 +52,10 @@ const newDistanceInMeters =
   initialDistanceInMeters + velocityInMetersPerSecond * duration.value;
 const newDistanceInKilometers = newDistanceInMeters / 1000;
 
+// Calculate remaining fuel
+const remainingFuelInKilograms =
+  fuelAmount.value - fuelBurnRate.value * duration.value;
+
 
 //console.log(accInKmH)
 console.log(`Corrected New Velocity: ${vel2} km/h`);
