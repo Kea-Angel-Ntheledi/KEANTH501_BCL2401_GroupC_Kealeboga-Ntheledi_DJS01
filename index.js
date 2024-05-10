@@ -63,12 +63,10 @@ const newVelocityInMetersPerSecond = calcNewVelocity(
   duration.value
 );
 const newVelocityInKilometersPerHour = newVelocityInMetersPerSecond * 3.6;
-``
 
-//console.log(accInKmH)
-console.log(`Corrected New Velocity: ${vel2} km/h`);
-console.log(`Corrected New Distance: ${d2} km`);
-console.log(`Corrected Remaining Fuel: ${rf} kg`);
+console.log(`Corrected New Velocity: ${newVelocityInKilometersPerHour} km/h`);
+console.log(`Corrected New Distance: ${newDistanceInKilometers} km`);
+console.log(`Corrected Remaining Fuel: ${remainingFuelInKilograms} kg`);
 
 
 
