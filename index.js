@@ -6,12 +6,13 @@
  */
 
 // Given Parameters
-const vel = 10000; // velocity (km/h)
-const acc = 3; // acceleration (m/s^2)
-const time = 3600; // seconds (1 hour)
-const d = 0; // distance (km)
-const fuel = 5000; // remaining fuel (kg)
-const fbr = 0.5; // fuel burn rate (kg/s)
+const velocity = { value: 10000, unit: "km/h" }; // velocity (km/h)
+const acceleration = { value: 3, unit: "m/s^2" }; // acceleration (m/s^2)
+const duration = { value: 3600, unit: "s" }; // seconds (1 hour)
+const initialDistance = { value: 0, unit: "km" }; // distance (km)
+const fuelAmount = { value: 5000, unit: "kg" }; // remaining fuel (kg)
+const fuelBurnRate = { value: 0.5, unit: "kg/s" }; // fuel burn rate (kg/s)
+
 //function that converts the units of easurement from meters to kilometers and from seconds to hours
 function unitConversion (acc, time) {
   const accInKmH = acc*3.6;
@@ -21,7 +22,7 @@ function unitConversion (acc, time) {
 }
 const {accInKmH, timeInHr} = unitConversion(acc,time); //calling the variables to global scope so that they can be used as arguments
 
-const d2 = d + (vel*timeInHr) //calcultes new distance
+const d2 = d + (vel*timeInHr) //calculates new distance
 const rf = fuel  - (fbr*time) //calculates remaining fuel
 const vel2 = calcNewVel(vel, accInKmH, time) //calculates new velocity based on acceleration
 
@@ -39,9 +40,7 @@ function calcNewVel(vel, accInKmH, time) {
     console.error(`Error: ${error.message}`)
   }
 
- 
-
-console.log(accInKmH)
+//console.log(accInKmH)
 console.log(`Corrected New Velocity: ${vel2} km/h`);
 console.log(`Corrected New Distance: ${d2} km`);
 console.log(`Corrected Remaining Fuel: ${rf} kg`);
