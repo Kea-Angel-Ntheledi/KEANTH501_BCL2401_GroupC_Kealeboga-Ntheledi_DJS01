@@ -29,14 +29,19 @@ const calcNewVelocity = (acceleration, velocity, duration) => {
   return newVelocity;
 };
 
-  try {
-    if (calcNewVel() === vel + (accInKmH*time) ){
-      throw new Error("Incorrect unit of measurement")
-    }
-
-  } catch (error) {
-    console.error(`Error: ${error.message}`)
-  }
+  // Validate input parameters
+if (
+  velocity.unit !== "km/h" ||
+  acceleration.unit !== "m/s^2" ||
+  duration.unit !== "s" ||
+  initialDistance.unit !== "km" ||
+  fuelAmount.unit !== "kg" ||
+  fuelBurnRate.unit !== "kg/s"
+) {
+  throw new Error(
+    "Invalid unit of measurement for one or more input parameters"
+  );
+}
 
 //console.log(accInKmH)
 console.log(`Corrected New Velocity: ${vel2} km/h`);
